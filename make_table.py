@@ -1,11 +1,16 @@
+"""
+This script is used to extract bibtex ref(\\cite variable) from tex src,
+and match it with a given table's tool-name column by tool name.
+"""
+
 import re
+from os import path
+
+import pandas as pd
+from langchain.chat_models import init_chat_model
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_core.prompts import ChatPromptTemplate
-import pandas as pd
-from os import path
 from pydantic import BaseModel, Field
-from langchain.chat_models import init_chat_model
-
 
 INPUT_XLSX = path.join(path.dirname(__file__), "input.xlsx")
 OUTPUT_CSV = path.join(path.dirname(__file__), "output.csv")
